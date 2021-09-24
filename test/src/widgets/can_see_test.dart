@@ -11,7 +11,7 @@ void main() {
         (tester) async {
       await tester.pumpWidget(
         GrantAccess(
-          ruleGenerator: Stream.fromIterable([
+          permissionsGenerator: Stream.fromIterable([
             () => [MockCanSee()]
           ]),
           child: CanSee(
@@ -31,7 +31,7 @@ void main() {
         (tester) async {
       await tester.pumpWidget(
         GrantAccess(
-          ruleGenerator: Stream.fromIterable([() => []]),
+          permissionsGenerator: Stream.fromIterable([() => []]),
           child: CanSee(
             permissions: [MockCanSee()],
             child: Container(key: const Key('child')),

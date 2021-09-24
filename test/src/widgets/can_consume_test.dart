@@ -11,7 +11,7 @@ void main() {
     testWidgets('should allow permissions', (tester) async {
       await tester.pumpWidget(
         GrantAccess(
-          ruleGenerator: Stream.fromIterable([
+          permissionsGenerator: Stream.fromIterable([
             () => [MockCanSee()]
           ]),
           child: CanConsume(
@@ -34,7 +34,7 @@ void main() {
     testWidgets('should not allow permissions', (tester) async {
       await tester.pumpWidget(
         GrantAccess(
-          ruleGenerator: Stream.fromIterable([
+          permissionsGenerator: Stream.fromIterable([
             () => []
           ]),
           child: CanConsume(

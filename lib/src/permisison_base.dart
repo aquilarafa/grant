@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-typedef RuleGeneratorFunction = List<PermissionBase> Function();
+typedef PermissionsGeneratorFunction = List<PermissionBase> Function();
 
 /// Base class for creating permission types
 abstract class PermissionBase extends Equatable {

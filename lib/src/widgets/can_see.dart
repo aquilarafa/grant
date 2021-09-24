@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../grant_rule_base.dart';
+import '../permisison_base.dart';
 import 'can_consume.dart';
 
 /// Show [child] when [permissions] are granted.

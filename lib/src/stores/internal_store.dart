@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../grant_rule_base.dart';
+import '../permisison_base.dart';
 
 abstract class InternalStore {
   Stream<List<PermissionBase>> get stream;
@@ -10,7 +10,7 @@ abstract class InternalStore {
 class InternalCubit extends Cubit<List<PermissionBase>>
     implements InternalStore {
   InternalCubit({
-    required Stream<RuleGeneratorFunction> ruleGenerator,
+    required Stream<PermissionsGeneratorFunction> ruleGenerator,
   }) : super(const []) {
     _streamSubscription = ruleGenerator.listen((generator) {
       emit(generator());

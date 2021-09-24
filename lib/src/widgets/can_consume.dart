@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:collection/collection.dart';
-import '../grant_rule_base.dart';
+import '../permisison_base.dart';
 import '../stores/internal_store.dart';
 
 class CanConsume extends StatelessWidget {
