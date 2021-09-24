@@ -12,14 +12,14 @@ class CanSee extends StatelessWidget {
     this.maintainSize = false,
     Key? key,
   }) : super(key: key);
-  final List<GrantRuleBase> permissions;
+  final List<PermissionBase> permissions;
   final Widget child;
   final bool maintainSize;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<InternalStore>(builder: (context, store, _) {
-      return StreamBuilder<List<GrantRuleBase>>(
+      return StreamBuilder<List<PermissionBase>>(
           stream: store.stream,
           builder: (context, snapshot) {
             final matches = const ListEquality().equals;

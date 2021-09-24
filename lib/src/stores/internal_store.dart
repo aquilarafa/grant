@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../grant_rule_base.dart';
 
 abstract class InternalStore {
-  Stream<List<GrantRuleBase>> get stream;
+  Stream<List<PermissionBase>> get stream;
 }
 
-class InternalCubit extends Cubit<List<GrantRuleBase>>
+class InternalCubit extends Cubit<List<PermissionBase>>
     implements InternalStore {
   InternalCubit({
     required Stream<RuleGeneratorFunction> ruleGenerator,
@@ -16,7 +16,7 @@ class InternalCubit extends Cubit<List<GrantRuleBase>>
       emit(generator());
     });
   }
-  StreamSubscription<List<GrantRuleBase> Function()>? _streamSubscription;
+  StreamSubscription<List<PermissionBase> Function()>? _streamSubscription;
 
   @override
   Future<void> close() {
@@ -25,5 +25,5 @@ class InternalCubit extends Cubit<List<GrantRuleBase>>
   }
 
   @override
-  Stream<List<GrantRuleBase>> get stream => super.stream;
+  Stream<List<PermissionBase>> get stream => super.stream;
 }

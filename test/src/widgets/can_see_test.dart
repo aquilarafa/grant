@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:grant/grant.dart';
 import 'package:grant/src/widgets/can_see.dart';
 
-class MockCanSee extends GrantRuleBase {}
+class MockCanSee extends PermissionBase {}
 
 void main() {
   group('CanSee widget', () {

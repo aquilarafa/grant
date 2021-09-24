@@ -4,11 +4,11 @@ import 'package:grant/grant.dart';
 import 'package:grant/src/stores/internal_store.dart';
 import 'package:provider/provider.dart';
 
-class MockCanCreate extends GrantRuleBase {}
+class MockCanCreate extends PermissionBase {}
 
-class MockCanSee extends GrantRuleBase {}
+class MockCanSee extends PermissionBase {}
 
-class MockCanUse extends GrantRuleBase {}
+class MockCanUse extends PermissionBase {}
 
 void main() {
   group('GrantAccess', () {
@@ -35,7 +35,7 @@ void main() {
         GrantAccess(
           ruleGenerator: Stream.fromIterable([() => permissions]),
           child: Consumer<InternalStore>(builder: (context, store, _) {
-            return StreamBuilder<List<GrantRuleBase>>(
+            return StreamBuilder<List<PermissionBase>>(
                 stream: store.stream,
                 builder: (context, snapshot) {
                   return Column(

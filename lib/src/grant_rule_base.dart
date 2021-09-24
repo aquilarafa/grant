@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-typedef RuleGeneratorFunction = List<GrantRuleBase> Function();
+typedef RuleGeneratorFunction = List<PermissionBase> Function();
 
-/// Base class for creating rule types
-abstract class GrantRuleBase extends Equatable {
+/// Base class for creating permission types
+abstract class PermissionBase extends Equatable {
   @override
   List<Object?> get props => [];
 }
