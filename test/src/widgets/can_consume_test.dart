@@ -4,6 +4,7 @@ import 'package:grant/grant.dart';
 import 'package:grant/src/widgets/can_consume.dart';
 
 class MockCanSee extends PermissionBase {}
+
 class MockCanUse extends PermissionBase {}
 
 void main() {
@@ -34,9 +35,7 @@ void main() {
     testWidgets('should not allow permissions', (tester) async {
       await tester.pumpWidget(
         GrantAccess(
-          permissionsGenerator: Stream.fromIterable([
-            () => []
-          ]),
+          permissionsGenerator: Stream.fromIterable([() => []]),
           child: CanConsume(
             permissions: [MockCanSee()],
             builder: (context, allowed) {

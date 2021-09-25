@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import '../permisison_base.dart';
 import '../stores/internal_store.dart';
 
+/// Uses a [builder] to indicate if permissions are granted.
 class CanConsume extends StatelessWidget {
   const CanConsume({
     required this.permissions,
