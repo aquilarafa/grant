@@ -15,7 +15,7 @@ class GrantAccess extends StatefulWidget {
   final List<PermissionBase> initialPermissions;
 
   static InternalStore storeOf(BuildContext context) {
-    return Provider.of<InternalStore>(context);
+    return Provider.of<InternalStore>(context, listen: false);
   }
 
   @override
