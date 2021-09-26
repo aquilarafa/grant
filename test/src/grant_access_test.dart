@@ -17,9 +17,8 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: GrantAccess(
-            permissionsGenerator: const Stream.empty(),
             child: Builder(builder: (context) {
-              store = Provider.of<InternalStore>(context);
+              store = GrantAccess.storeOf(context);
 
               return const SizedBox();
             }),
@@ -33,11 +32,11 @@ void main() {
       final permissions = [MockCanCreate(), MockCanSee()];
       await tester.pumpWidget(
         GrantAccess(
-          permissionsGenerator: Stream.fromIterable([() => permissions]),
           child: Consumer<InternalStore>(builder: (context, store, _) {
             return StreamBuilder<List<PermissionBase>>(
                 stream: store.stream,
                 builder: (context, snapshot) {
+                  store.updatePermissions(permissions);
                   return Column(
                     key: const Key('column'),
                     children: snapshot.data

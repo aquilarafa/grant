@@ -11,26 +11,24 @@ void main() {
   group('InternalCubit', () {
     blocTest(
       'emits [] when zero permissions are generated',
-      build: () => InternalCubit(permissionsGenerator: const Stream.empty()),
+      build: () => InternalCubit(),
       expect: () => [],
     );
-    blocTest(
+    blocTest<InternalCubit, List<PermissionBase>>(
       'emits [[MockPermission()]] when given permissions are generated',
-      build: () => InternalCubit(
-          permissionsGenerator: Stream.fromIterable([
-        () => [MockCanSee()]
-      ])),
+      build: () => InternalCubit(),
+      act: (cubit) => cubit.updatePermissions([MockCanSee()]),
       expect: () => [
         [MockCanSee()]
       ],
     );
-    blocTest(
+    blocTest<InternalCubit, List<PermissionBase>>(
       'emits last generated permission list',
-      build: () => InternalCubit(
-          permissionsGenerator: Stream.fromIterable([
-        () => [MockCanSee()],
-        () => [MockCanSee(), MockCanLove()],
-      ])),
+      build: () => InternalCubit(),
+      act: (cubit) {
+        cubit.updatePermissions([MockCanSee()]);
+        cubit.updatePermissions([MockCanSee(), MockCanLove()]);
+      },
       expect: () => [
         [MockCanSee()],
         [MockCanSee(), MockCanLove()]

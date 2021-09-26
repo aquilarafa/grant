@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:grant/grant.dart';
 import 'package:provider/provider.dart';
 
 import '../stores/internal_cubit.dart';
 import '../stores/internal_store.dart';
-import '../permisison_base.dart';
 
 class GrantAccess extends StatefulWidget {
   const GrantAccess({
     required this.child,
-    required this.permissionsGenerator,
+    this.initialPermissions = const [],
     Key? key,
   }) : super(key: key);
   final Widget child;
-  final Stream<PermissionsGeneratorFunction> permissionsGenerator;
+  final List<PermissionBase> initialPermissions;
+
+  static InternalStore storeOf(BuildContext context) {
+    return Provider.of<InternalStore>(context);
+  }
 
   @override
   _GrantAccessState createState() => _GrantAccessState();
@@ -22,9 +26,7 @@ class _GrantAccessState extends State<GrantAccess> {
   @override
   Widget build(BuildContext context) {
     return Provider<InternalStore>(
-      create: (context) => InternalCubit(
-        permissionsGenerator: widget.permissionsGenerator,
-      ),
+      create: (context) => InternalCubit(),
       child: widget.child,
     );
   }

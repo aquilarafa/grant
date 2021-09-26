@@ -12,17 +12,17 @@ void main() {
     testWidgets('should allow permissions', (tester) async {
       await tester.pumpWidget(
         GrantAccess(
-          permissionsGenerator: Stream.fromIterable([
-            () => [MockCanSee()]
-          ]),
-          child: CanConsume(
-            permissions: [MockCanSee()],
-            builder: (context, allowed) {
-              return allowed
-                  ? Container(key: const Key('allowed'))
-                  : Container();
-            },
-          ),
+          child: Builder(builder: (context) {
+            return CanConsume(
+              permissions: [MockCanSee()],
+              builder: (context, allowed) {
+                GrantAccess.storeOf(context).updatePermissions([MockCanSee()]);
+                return allowed
+                    ? Container(key: const Key('allowed'))
+                    : Container();
+              },
+            );
+          }),
         ),
       );
       await tester.pump(Duration.zero);
@@ -35,7 +35,6 @@ void main() {
     testWidgets('should not allow permissions', (tester) async {
       await tester.pumpWidget(
         GrantAccess(
-          permissionsGenerator: Stream.fromIterable([() => []]),
           child: CanConsume(
             permissions: [MockCanSee()],
             builder: (context, allowed) {
